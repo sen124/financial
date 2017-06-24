@@ -1,5 +1,70 @@
-<%= @accounts.new do |table|%>
-    <%= table.Date %>
-    <%= table. Title %>
-    <%= table. Amount %>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <ul class="nav navbar-nav navbar-right">
+  <!-- /.navbar-collapse -->
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+  Ledger
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Accounts</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= simple_form_for Account.new,method: :post do |f| %>
+       <div class="modal-body">
+       <%= f.input :Date %>
+       <%= f.input :Title %>
+       <%= f.input :Amount %>
+       
+       </div>
+       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= f.button :submit,class:'btn btn-sm btn-primary' %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+ 
+  </ul>
+</div>
+
+
+
+
+<h4>Balance</h4>
+<h4>Debt</h4>
+<h4>Total</h4>
+<table class="table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th class="D">Date</th>
+        <th class="T">Title</th>
+        <th class="A">Amount</th>
+    </tr>
+    </thead>
+<tbody>
+<% @accounts.each do |table|%>
+<tr>
+<th scope="row"></th>
+<td class="D1"><%= table.Date %></td>
+<td class="T1"><%= table.Title %></td>
+<td class="A1"><%= table. Amount %></td>
+<th scope="row">
+<button class="R"><%=link_to 'Revise', edit_account_path(@accounts),class:'btn btn-sm btn-primary'%>
+<%= link_to 'Delete', account_path(@accounts),method: :delete, class:'btn btn-sm btn-primary' %></button></th>
+
+</div>
+</tr>
+
 <% end %>
+</tbody>
+</table>
