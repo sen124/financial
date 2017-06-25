@@ -4,13 +4,18 @@ class AccountsController < ApplicationController
 
     end
    def create
- @account=Account.create(account_params)
- redirect_to root_path
+     @account=Account.create(account_params)
+   if @account.valid?
+     #
+   else
+     #
+   end
+     redirect_to root_path
    end
 
 def edit
    @account=Account.find(params[:id])
-    redirect_to root_path
+    
 end
 def update
    @account= Account.find(params[:id])

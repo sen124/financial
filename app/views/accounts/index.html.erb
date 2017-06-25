@@ -1,3 +1,16 @@
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="navbar-brand" href="/">Simple Accounting</a></a>
+</div>
+
+
+
+
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   <ul class="nav navbar-nav navbar-right">
   <!-- /.navbar-collapse -->
@@ -52,15 +65,15 @@
     </tr>
     </thead>
 <tbody>
-<% @accounts.each do |table|%>
+<% @accounts.each do |account|%>
 <tr>
 <th scope="row"></th>
-<td class="D1"><%= table.Date %></td>
-<td class="T1"><%= table.Title %></td>
-<td class="A1"><%= table. Amount %></td>
+<td class="D1"><%= account.Date %></td>
+<td class="T1"><%= account.Title %></td>
+<td class="A1"><%= account. Amount %></td>
 <th scope="row">
-<button class="R"><%=link_to 'Revise', edit_account_path(@accounts),class:'btn btn-sm btn-primary'%>
-<%= link_to 'Delete', account_path(@accounts),method: :delete, class:'btn btn-sm btn-primary' %></button></th>
+<button class="R"><%=link_to 'Revise', edit_account_path(account),class:'btn btn-sm btn-primary'%>
+<%= link_to 'Delete', account_path(account),method: :delete, data:{confirm:"are you sure?"},class:'btn btn-sm btn-primary' %></button></th>
 
 </div>
 </tr>
